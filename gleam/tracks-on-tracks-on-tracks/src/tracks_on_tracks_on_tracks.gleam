@@ -24,10 +24,7 @@ pub fn exciting_list(languages: List(String)) -> Bool {
   let exciting_length_list = list.length(languages) < 4
   case languages {
     [first, ..] if first == "Gleam" -> True
-    [_, second, ..] if second == "Gleam" -> case exciting_length_list {
-      True -> True
-      _ -> False
-    }
+    [_, second, ..] if second == "Gleam" -> exciting_length_list 
     _ -> False
   }
 }
