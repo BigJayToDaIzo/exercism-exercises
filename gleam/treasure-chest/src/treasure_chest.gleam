@@ -4,10 +4,12 @@ pub type TreasureChest(a){
     treasure: a
   )
 }
+
 pub type UnlockResult(a) {
   Unlocked(a)
   WrongPassword
 }
+
 pub fn get_treasure(
   chest: TreasureChest(treasure),
   password: String,

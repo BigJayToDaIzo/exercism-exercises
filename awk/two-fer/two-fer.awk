@@ -1,4 +1,1 @@
-BEGIN {
-    print "Implement this solution" > "/dev/stderr"
-    exit 1
-}
+END { print "One for " ($0 ? $0 : "you") ", one for me."}
