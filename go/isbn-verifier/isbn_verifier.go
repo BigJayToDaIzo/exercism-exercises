@@ -9,19 +9,21 @@ import (
 func IsValidISBN(isbn string) bool {
 	// Remove hyphens
 	refIsbn := strings.ReplaceAll(isbn, "-", "")
-	fmt.Printf("isbn: %s refIsbn: %s\n", isbn, refIsbn)
-
 	if utf8.RuneCountInString(refIsbn) != 10 {
-		fmt.Printf("wrong length (%s): %d\n", refIsbn, utf8.RuneCountInString(isbn))
 		return false
 	}
-	// Check if last char is X or 0-9
 	adder := 0
-	// Do maths
-	if adder != 0 && adder%11 == 0 {
-		fmt.Printf("%s is a good ISBN!\n", refIsbn)
-	} else {
-		fmt.Printf("%s is NOT a good ISBN!\n", refIsbn)
+	for i, c := range refIsbn {
+		// Check if last char is X or 0-9
+		if i == 9 && c == 'X' || c == 'x' {
+			// Do maths
+			adder += 10
+		} else if c >= '0' && c <= '9' {
+			adder += int(c-'0') * (10 - i)
+		} else {
+			fmt.Printf("invalid char: %c\n", c)
+			return false
+		}
 	}
 	return adder%11 == 0
 }
