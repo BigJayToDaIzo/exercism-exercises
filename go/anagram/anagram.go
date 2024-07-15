@@ -1,29 +1,35 @@
 package anagram
 
-import (
-	"fmt"
-	"strings"
-	"unicode"
-)
+import "strings"
 
 func Detect(subject string, candidates []string) []string {
-	fmt.Printf("subject: %v\n", subject)
-	expected := []string{}
-	for _, candidate := range candidates {
-		fmt.Printf("candidate: %v\n", strings.ToLower(candidate))
-		if strings.EqualFold(subject, candidate) || len(subject) != len(candidate) {
-			fmt.Printf("subject: %v & candidate: %v rejected for sameness or length mismatch\n", subject, candidate)
-			continue
-		}
-		for i, rune := range subject {
-			if !strings.ContainsRune(strings.ToLower(candidate), unicode.ToLower(rune)) {
-				fmt.Printf("rune: %v not contained in %v!\n", string(rune), candidate)
-				break
-			} else if i == len(subject)-1 {
-				fmt.Printf("!anagram!: %v\n", candidate)
-				expected = append(expected, candidate)
-			}
+	lowerSubject := strings.ToLower(subject)
+	anagrams := []string{}
+	for i, candidate := range candidates {
+		lowerCandidate := strings.ToLower(candidate)
+		if isAnagram(lowerSubject, lowerCandidate) {
+			anagrams = append(anagrams, candidates[i])
 		}
 	}
-	return expected
+	return anagrams
+}
+
+func isAnagram(subject, candidate string) bool {
+	if len(subject) != len(candidate) {
+		return false
+	}
+	if subject == candidate {
+		return false
+	}
+	subjectMap := make(map[rune]int)
+	for _, r := range subject {
+		subjectMap[r]++
+	}
+	for _, r := range candidate {
+		if subjectMap[r] == 0 {
+			return false
+		}
+		subjectMap[r]--
+	}
+	return true
 }

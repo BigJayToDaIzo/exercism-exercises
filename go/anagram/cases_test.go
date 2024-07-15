@@ -88,7 +88,7 @@ var testCases = []anagramTest{
 	{
 		description: "anagrams must use all letters exactly once",
 		subject:     "tapper",
-		candidates:  []string{"pattern"},
+		candidates:  []string{"patter"},
 		expected:    []string{},
 	},
 	{
