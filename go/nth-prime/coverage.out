@@ -1,0 +1,11 @@
+mode: set
+prime/nth_prime.go:6.30,7.11 1 1
+prime/nth_prime.go:7.11,9.3 1 1
+prime/nth_prime.go:10.2,10.20 1 1
+prime/nth_prime.go:10.20,11.21 1 1
+prime/nth_prime.go:11.21,13.14 2 1
+prime/nth_prime.go:13.14,15.5 1 1
+prime/nth_prime.go:20.30,21.28 1 1
+prime/nth_prime.go:21.28,22.15 1 1
+prime/nth_prime.go:22.15,24.4 1 1
+prime/nth_prime.go:26.2,26.14 1 1

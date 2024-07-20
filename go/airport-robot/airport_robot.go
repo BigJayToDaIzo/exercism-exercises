@@ -1,4 +1,4 @@
-package airportrobot
+package main
 
 import "fmt"
 
