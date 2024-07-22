@@ -1,0 +1,5 @@
+mode: set
+prime/prime_factors.go:3.31,5.33 2 1
+prime/prime_factors.go:5.33,6.16 1 1
+prime/prime_factors.go:6.16,9.4 2 1
+prime/prime_factors.go:11.2,11.16 1 1
