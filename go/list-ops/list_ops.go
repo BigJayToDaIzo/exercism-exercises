@@ -4,33 +4,91 @@ package listops
 type IntList []int
 
 func (s IntList) Foldl(fn func(int, int) int, initial int) int {
-	panic("Please implement the Foldl function")
+	accumulator := initial
+	for _, v := range s {
+		accumulator = fn(accumulator, v)
+	}
+	return accumulator
 }
 
 func (s IntList) Foldr(fn func(int, int) int, initial int) int {
-	panic("Please implement the Foldr function")
+	accumulator := initial
+	s = s.Reverse()
+	for _, v := range s {
+		accumulator = fn(v, accumulator)
+	}
+	return accumulator
 }
 
 func (s IntList) Filter(fn func(int) bool) IntList {
-	panic("Please implement the Filter function")
+	listSize := 0
+	for _, v := range s {
+		if fn(v) {
+			listSize++
+		}
+	}
+	newList := make([]int, listSize)
+	innerIter := 0
+	for _, v := range s {
+		if fn(v) {
+			newList[innerIter] = v
+			innerIter++
+		}
+	}
+	return newList
 }
 
 func (s IntList) Length() int {
-	panic("Please implement the Length function")
+	length := 0
+	for range s {
+		length++
+	}
+	return length
 }
 
 func (s IntList) Map(fn func(int) int) IntList {
-	panic("Please implement the Map function")
+	newList := make([]int, s.Length())
+	for i, v := range s {
+		newList[i] = fn(v)
+	}
+	return newList
 }
 
 func (s IntList) Reverse() IntList {
-	panic("Please implement the Reverse function")
+	newList := make([]int, s.Length())
+	for i, v := range s {
+		newList[s.Length()-1-i] = v
+	}
+	return newList
 }
 
 func (s IntList) Append(lst IntList) IntList {
-	panic("Please implement the Append function")
+	newList := make([]int, s.Length()+lst.Length())
+	for i, v := range s {
+		newList[i] = v
+	}
+	for i, v := range lst {
+		newList[i+s.Length()] = v
+	}
+	return newList
 }
 
 func (s IntList) Concat(lists []IntList) IntList {
-	panic("Please implement the Concat function")
+	finalListSize := s.Length()
+	for _, lst := range lists {
+		finalListSize += lst.Length()
+	}
+	newList := make([]int, finalListSize)
+	listIter := 0
+	for _, v := range s {
+		newList[listIter] = v
+		listIter++
+	}
+	for _, lst := range lists {
+		for _, v := range lst {
+			newList[listIter] = v
+			listIter++
+		}
+	}
+	return newList
 }

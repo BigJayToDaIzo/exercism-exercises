@@ -13,6 +13,7 @@ var foldTestCases = []struct {
 	list     IntList
 	want     int
 }{
+
 	{
 		name:     "empty list",
 		property: "Foldl",
@@ -88,6 +89,7 @@ var filterTestCases = []struct {
 	list     IntList
 	want     IntList
 }{
+
 	{
 		name:     "empty list",
 		property: "filter",
@@ -121,6 +123,7 @@ var lengthTestCases = []struct {
 	list     IntList
 	want     int
 }{
+
 	{
 		name:     "empty list",
 		property: "length",
@@ -152,6 +155,7 @@ var mapTestCases = []struct {
 	fn       func(int) int
 	want     IntList
 }{
+
 	{
 		name:     "empty list",
 		property: "map",
