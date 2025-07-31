@@ -9,7 +9,7 @@ pub fn existing_list() -> List(String) {
 }
 
 pub fn add_language(languages: List(String), language: String) -> List(String) {
-  [language, ..languages]
+    [language, ..languages]
 }
 
 pub fn count_languages(languages: List(String)) -> Int {
@@ -21,10 +21,8 @@ pub fn reverse_list(languages: List(String)) -> List(String) {
 }
 
 pub fn exciting_list(languages: List(String)) -> Bool {
-  let exciting_length_list = list.length(languages) < 4
   case languages {
-    [first, ..] if first == "Gleam" -> True
-    [_, second, ..] if second == "Gleam" -> exciting_length_list 
+    [a, ..] | [_, a] | [_, a, _] if a == "Gleam" -> True
     _ -> False
   }
 }

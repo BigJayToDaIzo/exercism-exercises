@@ -9,7 +9,6 @@ pub type Cuisine {
   Turkish
 }
 
-
 pub type Genre {
   Crime
   Horror
@@ -27,19 +26,18 @@ pub type Activity {
 
 pub fn rate_activity(activity: Activity) -> Approval {
   case activity {
-    BoardGame -> No
-    Chill -> No
-    Movie(genre) -> case genre {
+    BoardGame | Chill -> No
+    Movie(g) -> case g {
       Romance -> Yes
       _ -> No
     }
-    Restaurant(cuisine) -> case cuisine {
+    Restaurant(c) -> case c {
       Korean -> Yes
       Turkish -> Maybe
     }
-    Walk(distance) -> case distance {
-      _i if distance > 11 -> Yes
-      _i if distance > 6 -> Maybe
+    Walk(m) -> case m {
+      m if m > 11 -> Yes
+      m if m > 6 -> Maybe
       _ -> No
     }
   }
