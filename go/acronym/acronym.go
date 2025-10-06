@@ -5,6 +5,7 @@ import (
 	"unicode"
 )
 
+
 // Abbreviate creates an acronym from a string
 func Abbreviate(s string) string {
 	filteredStr := strings.ReplaceAll(s, "'s", "")

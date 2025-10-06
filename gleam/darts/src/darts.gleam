@@ -2,13 +2,14 @@ import gleam/float
 import gleam/result
 
 pub fn score(x: Float, y: Float) -> Int {
-  let dist_from_center =
-    float.square_root({x *. x} +. {y *. y})
-    |> result.unwrap(0.0)
-  case dist_from_center {
-    d if d >. 10.0 -> 0
-    d if d >. 5.0 -> 1
-    d if d >. 1.0 -> 5
-    _ -> 10
+  case calculate_hypot(x, y) {
+    h if h <=. 1.0 -> 10
+    h if h <=. 5.0 -> 5
+    h if h <=. 10.0 -> 1
+    _ -> 0
   }
+}
+
+fn calculate_hypot(x: Float, y: Float) -> Float {
+  result.unwrap(float.square_root(x *. x +. y *. y), 0.0)
 }
